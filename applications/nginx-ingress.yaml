@@ -10,7 +10,7 @@ spec:
     namespace: nginx-ingress
   project: default
   source:
-    path: k8s
+    path: src
     repoURL: https://gitlab.com/gitops-demo18/infrastructure/nginx-ingress.git
     targetRevision: HEAD
   syncPolicy:
