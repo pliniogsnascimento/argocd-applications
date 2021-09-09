@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: orders
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: k8s
+    repoURL: https://github.com/pliniogsnascimento/Orders
+    targetRevision: HEAD

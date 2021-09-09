@@ -1,0 +1,11 @@
+apiVersion: v2
+name: litmus-chaos
+description: Kubernetes litmus chaos platform
+type: application
+version: 0.1.0
+appVersion: "1.0"
+
+dependencies:
+- name: litmus
+  repository: https://litmuschaos.github.io/litmus-helm/
+  version: 2.0.32
