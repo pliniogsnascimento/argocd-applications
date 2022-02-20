@@ -29,3 +29,19 @@ spec:
     path: src/istiod
     repoURL: https://github.com/pliniogsnascimento/istio-gitops.git
     targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-ingress
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
+  project: default
+  source:
+    path: src/gateway
+    repoURL: https://github.com/pliniogsnascimento/istio-gitops.git
+    targetRevision: HEAD
