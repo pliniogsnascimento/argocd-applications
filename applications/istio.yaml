@@ -7,6 +7,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
+    namespace: istio-system
   project: default
   source:
     path: src/istio-base
@@ -22,6 +23,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
+    namespace: istio-system
   project: default
   source:
     path: src/istiod
