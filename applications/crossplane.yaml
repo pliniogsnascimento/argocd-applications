@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  project: platform
+  source:
+    path: src/crossplane
+    repoURL: https://github.com/pliniogsnascimento/k8s-platform-tools.git
+    targetRevision: HEAD
