@@ -10,8 +10,8 @@ spec:
     namespace: nginx-ingress
   project: platform
   source:
-    path: src
-    repoURL: https://gitlab.com/gitops-demo18/infrastructure/nginx-ingress.git
+    path: src/nginx-ingress
+    repoURL: https://github.com/pliniogsnascimento/k8s-platform-tools.git
     targetRevision: HEAD
   # syncPolicy:
   #   automated:

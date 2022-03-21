@@ -10,8 +10,8 @@ spec:
     namespace: istio-system
   project: platform
   source:
-    path: src/istio-base
-    repoURL: https://github.com/pliniogsnascimento/istio-gitops.git
+    path: src/istio/istio-base
+    repoURL: https://github.com/pliniogsnascimento/k8s-platform-tools.git
     targetRevision: HEAD
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -26,8 +26,8 @@ spec:
     namespace: istio-system
   project: platform
   source:
-    path: src/istiod
-    repoURL: https://github.com/pliniogsnascimento/istio-gitops.git
+    path: src/istio/istiod
+    repoURL: https://github.com/pliniogsnascimento/k8s-platform-tools.git
     targetRevision: HEAD
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -42,6 +42,6 @@ spec:
     namespace: istio-system
   project: platform
   source:
-    path: src/gateway
-    repoURL: https://github.com/pliniogsnascimento/istio-gitops.git
+    path: src/istio/gateway
+    repoURL: https://github.com/pliniogsnascimento/k8s-platform-tools.git
     targetRevision: HEAD
