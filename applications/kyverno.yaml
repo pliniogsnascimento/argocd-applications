@@ -9,6 +9,6 @@ spec:
     server: https://kubernetes.default.svc
   project: platform
   source:
-    path: src
+    path: src/kyverno
     repoURL: https://github.com/pliniogsnascimento/k8s-platform-tools.git
     targetRevision: HEAD
