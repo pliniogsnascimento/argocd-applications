@@ -8,7 +8,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: nginx-ingress
-  project: default
+  project: platform
   source:
     path: src
     repoURL: https://gitlab.com/gitops-demo18/infrastructure/nginx-ingress.git
