@@ -13,3 +13,6 @@ spec:
     path: src/crossplane
     repoURL: https://github.com/pliniogsnascimento/k8s-platform-tools.git
     targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
