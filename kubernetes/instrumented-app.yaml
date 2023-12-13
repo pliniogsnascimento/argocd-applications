@@ -11,8 +11,8 @@ spec:
   endpoints:
   - port: web
 ---
-kind: Service
 apiVersion: v1
+kind: Service
 metadata:
   name: example-app
   labels:
