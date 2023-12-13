@@ -9,6 +9,8 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: kubernetes/instrumented-app.yaml
+    path: kubernetes
     repoURL: https://github.com/pliniogsnascimento/argocd-applications.git
     targetRevision: HEAD
+    directory:
+      include: 'instrumented-app.yaml'
