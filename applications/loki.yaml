@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: observability
+    namespace: loki
   project: observability
   sources:
   - repoURL: 'https://grafana.github.io/helm-charts'
