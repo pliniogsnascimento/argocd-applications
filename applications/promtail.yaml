@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: promtail
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: promtail
+  project: observability
+  sources:
+  - repoURL: 'https://grafana.github.io/helm-charts'
+    chart: promtail
+    targetRevision: 6.14.1
+    helm:
+      version: v3
+      valueFiles:
+      - $values/values/promtail.yaml
+  - repoURL: 'https://github.com/pliniogsnascimento/argocd-applications.git'
+    targetRevision: HEAD
+    ref: values
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
