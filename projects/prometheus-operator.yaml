@@ -1,0 +1,32 @@
+grafana:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/rewrite-target: /
+    paths:
+    - path: /grafana
+      pathType: Prefix
+      backend:
+        service:
+          name: prometheus-operator-grafana
+          port:
+            number: 80
+  additionalDataSources:
+  - name: loki
+    access: proxy
+    editable: false
+    type: loki
+    url: http://loki-gateway.loki
+    version: 1
+
+
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    serviceMonitorNamespaceSelector: {}
+    podMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelector: {}
+    podMonitorNamespaceSelector: {}
+    

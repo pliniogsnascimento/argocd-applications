@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-operator
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prometheus
+  project: observability
+  sources:
+  - repoURL: 'https://prometheus-community.github.io/helm-charts'
+    chart: kube-prometheus-stack
+    targetRevision: 47.1.0
+    helm:
+      valueFiles:
+      - $values/values/prometheus-operator.yaml
+  - repoURL: 'https://github.com/pliniogsnascimento/argocd-applications.git'
+    targetRevision: HEAD
+    ref: values
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
