@@ -8,9 +8,9 @@ loki:
     path_prefix: /var/loki
   image:
     tag: 2.9.0
-  storage:
-    type: azure
-  storage_config:
-    azure:
-      use_service_principal: true
-      request_timeout: 0
+  # storage:
+  #   type: azure
+  # storage_config:
+  #   azure:
+  #     use_service_principal: true
+  #     request_timeout: 0
