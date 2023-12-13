@@ -12,10 +12,9 @@ spec:
   project: observability
   sources:
   - repoURL: 'https://open-telemetry.github.io/opentelemetry-helm-charts'
-    chart: open-telemetry/opentelemetry-collector
+    chart: opentelemetry-collector
     targetRevision: 0.77.0
     helm:
-      version: v3
       valueFiles:
       - $values/values/opentel-collector.yaml
   - repoURL: 'https://github.com/pliniogsnascimento/argocd-applications.git'
@@ -24,4 +23,3 @@ spec:
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
-    - ServerSideApply=true
