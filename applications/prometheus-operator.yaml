@@ -15,6 +15,7 @@ spec:
     chart: kube-prometheus-stack
     targetRevision: 47.1.0
     helm:
+      version: v3
       valueFiles:
       - $values/values/prometheus-operator.yaml
   - repoURL: 'https://github.com/pliniogsnascimento/argocd-applications.git'

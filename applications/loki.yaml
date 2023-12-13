@@ -9,12 +9,13 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: observability
-  project: default
+  project: observability
   sources:
   - repoURL: 'https://grafana.github.io/helm-charts'
     chart: loki
     targetRevision: 5.20.0
     helm:
+      version: v3
       valueFiles:
       - $values/values/loki.yaml
   - repoURL: 'https://github.com/pliniogsnascimento/argocd-applications.git'
