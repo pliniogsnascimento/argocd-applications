@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: opentelemetry-collector
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: opentelemetry
+  project: observability
+  sources:
+  - repoURL: 'https://open-telemetry.github.io/opentelemetry-helm-charts'
+    chart: open-telemetry/opentelemetry-collector
+    targetRevision: 0.77.0
+    helm:
+      version: v3
+      valueFiles:
+      - $values/values/opentel-collector.yaml
+  - repoURL: 'https://github.com/pliniogsnascimento/argocd-applications.git'
+    targetRevision: HEAD
+    ref: values
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
