@@ -7,9 +7,12 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: apps
   project: default
   source:
     path: apps
     repoURL: https://github.com/pliniogsnascimento/kubernetes-app-challenge.git
     targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
