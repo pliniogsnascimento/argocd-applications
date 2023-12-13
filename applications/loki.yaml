@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: loki-distributed
+  name: loki
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -16,7 +16,7 @@ spec:
     targetRevision: 5.20.0
     helm:
       valueFiles:
-      - $values/values/loki-distributed.yaml
+      - $values/values/loki.yaml
   - repoURL: 'https://github.com/pliniogsnascimento/argocd-applications.git'
     targetRevision: HEAD
     ref: values
