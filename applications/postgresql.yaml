@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-operator
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: postgresql
+  project: observability
+  sources:
+  - repoURL: 'https://charts.bitnami.com/bitnami'
+    chart: postgresql
+    targetRevision: 14.0.5
+    helm:
+      version: v3
+      valueFiles:
+      - $values/values/postgresql.yaml
+  - repoURL: 'https://github.com/pliniogsnascimento/argocd-applications.git'
+    targetRevision: HEAD
+    ref: values
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: app-jobs
+  name: app-jobs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-jobs
+  template:
+    metadata:
+      labels:
+        app: app-jobs
+    spec:
+      containers:
+      - image: pliniogsnascimento/jobs-api
+        name: jobs-api
+        resources: {}
