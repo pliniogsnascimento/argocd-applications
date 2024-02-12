@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jobs-api
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps
+  project: default
+  source:
+    path: kubernetes
+    repoURL: https://github.com/pliniogsnascimento/argocd-applications.git
+    targetRevision: HEAD
+    directory:
+      include: 'jobs-api.yaml'
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
