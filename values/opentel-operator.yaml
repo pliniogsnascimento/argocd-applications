@@ -223,7 +223,7 @@ admissionWebhooks:
   ## certManager must be disabled and autoGenerateCert must be enabled.
   ## If true and certManager.enabled is false, Helm will automatically create a self-signd cert and secret for you.
   autoGenerateCert:
-    enabled: false
+    enabled: true
     # If set to true, new webhook key/certificate is generated on helm upgrade.
     recreate: true
 
