@@ -25,10 +25,17 @@ spec:
     server: https://kubernetes.default.svc
     namespace: istio-system
   project: platform
-  source:
-    path: src/istio/istiod
-    repoURL: https://github.com/pliniogsnascimento/k8s-platform-tools.git
+  sources:
+  - chart: istiod
+    helm:
+      releaseName: istiod
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: 1.22.2
+    valueFiles:
+    - $values/values/istio-base.yaml
+  - repoURL: 'https://github.com/pliniogsnascimento/argocd-applications.git'
     targetRevision: HEAD
+    ref: values
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application

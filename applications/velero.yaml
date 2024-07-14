@@ -1,0 +1,19 @@
+# helm repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: velero
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: velero
+  project: platform
+  source:
+    path: src/crossplane
+    repoURL: https://github.com/pliniogsnascimento/k8s-platform-tools.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
