@@ -63,7 +63,18 @@ spec:
     server: https://kubernetes.default.svc
     namespace: istio-system
   project: platform
-  source:
-    path: src/istio/gateway
-    repoURL: https://github.com/pliniogsnascimento/k8s-platform-tools.git
+  sources:
+  - chart: gateway
+    helm:
+      releaseName: istio-ingressgateway
+    repoURL: https://istio-release.storage.googleapis.com/charts
+    targetRevision: 1.22.2
+    valueFiles:
+    - $values/values/istio-ingress.yaml
+  - repoURL: 'https://github.com/pliniogsnascimento/argocd-applications.git'
     targetRevision: HEAD
+    ref: values
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
