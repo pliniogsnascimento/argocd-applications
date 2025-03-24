@@ -10,9 +10,13 @@ spec:
     namespace: nginx-ingress
   project: platform
   source:
-    path: src/nginx-ingress
-    repoURL: https://github.com/pliniogsnascimento/k8s-platform-tools.git
-    targetRevision: HEAD
+    chart: nginx-ingress
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    targetRevision: 4.12.0
+    helm:
+      releaseName: nginx-ingress
+      valueFiles:
+      - $values/values/nginx-ingress.yaml
   # syncPolicy:
   #   automated:
   #     selfHeal: true
