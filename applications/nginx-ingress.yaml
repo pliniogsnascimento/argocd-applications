@@ -9,15 +9,21 @@ spec:
     server: https://kubernetes.default.svc
     namespace: ingress-nginx
   project: platform
-  source:
-    chart: ingress-nginx
+  sources:
+  - repoURL: 'https://github.com/pliniogsnascimento/argocd-applications.git'
+    targetRevision: HEAD
+    ref: values
+  - chart: ingress-nginx
     repoURL: https://kubernetes.github.io/ingress-nginx
     targetRevision: 4.12.0
     helm:
       releaseName: ingress-nginx
       valueFiles:
       - $values/values/ingress-nginx.yaml
-  # syncPolicy:
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
   #   automated:
   #     selfHeal: true
   #     prune: true
