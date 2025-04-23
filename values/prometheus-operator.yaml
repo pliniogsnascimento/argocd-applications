@@ -2,16 +2,8 @@ grafana:
   ingress:
     enabled: true
     ingressClassName: nginx
-    annotations:
-      nginx.ingress.kubernetes.io/rewrite-target: /
-    paths:
-    - path: /grafana
-      pathType: Prefix
-      backend:
-        service:
-          name: prometheus-operator-grafana
-          port:
-            number: 80
+    hosts:
+    - grafana.homelab
   additionalDataSources:
   - name: loki
     access: proxy

@@ -10,5 +10,6 @@ spec:
   project: platform
   source:
     path: src/kyverno
+    # TODO: Change this to official helm repo
     repoURL: https://github.com/pliniogsnascimento/k8s-platform-tools.git
     targetRevision: HEAD
